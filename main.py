@@ -36,9 +36,14 @@ OUTPUT_TOP8ER_JSON = 'output/top8er/smash_remix/game.json'
 OUTPUT_STARTGG_CSS_PORTRAITS = 'output/startgg/css_portraits'
 OUTPUT_STARTGG_STOCK_ICONS = 'output/startgg/stock_icons'
 OUTPUT_STARTGG_JSON = 'output/startgg/reference.json'
+OUTPUT_PARRYGG_CHARACTER_JSON = 'output/parrygg/characters'
+OUTPUT_PARRYGG_STAGE_JSON = 'output/parrygg/stages'
 
 # Reference files used for overrides etc
 REF_TOP8ER_PORTRAIT = 'reference/top8er_reference/portrait_config.json'
+
+# For computing relative local paths; ensure you have this repo checked out here or change the code accordingly.
+PARRYGG_PROJECT_DIR = '../game-metadata'
 
 
 # --- Helpers ---
@@ -240,7 +245,7 @@ def create_top8er_json():
                 diff.save('temp.png')
                 palette = ColorThief('temp.png').get_color(quality=1)
                 color = get_closest_css3_color(palette)
-                color = color.strip()
+                os.remove('temp.png')
 
             if color not in colors_by_character.get(char, []):
                 colors_by_character[char].append(color)
@@ -356,6 +361,78 @@ def main_startgg():
     create_startgg_json()
 
 
+def create_parrygg_character_json():
+    ensure_path(OUTPUT_PARRYGG_CHARACTER_JSON)
+    with open(OUTPUT_TOP8ER_JSON, 'r', encoding='utf-8') as json_file:
+        top8er_json_data = json.load(json_file)
+
+    character_list = top8er_json_data['characters']
+    for friendly_character_name in character_list:
+        snakecase_name = friendly_character_name.replace(' ', '_').lower()
+        # Remove any special characters like apostrophes or periods
+        snakecase_name = re.sub(r'[^\w]', '', snakecase_name)
+        kebab_name = snakecase_name.replace('_', '-')
+        variants = []
+        for idx, color_name in enumerate(top8er_json_data['colors'][friendly_character_name]):
+            dest_path = Path(f'{PARRYGG_PROJECT_DIR}/games/smash-remix/characters/{kebab_name}-{idx}.png')
+            shutil.copy(f'{INPUT_STOCK_ICON_PATH}/base_files/icon/{snakecase_name}_{idx}.png', dest_path)
+            color_data = {
+                "images": {
+                    "stock_icon": './' + os.path.relpath(dest_path, PARRYGG_PROJECT_DIR),
+                }
+            }
+            if color_name.lower() != 'default':
+                color_data['metadata'] = {
+                    "color": color_name.lower(),
+                    "variant": idx
+                }
+
+            variants.append(color_data)
+
+        with open(f'{OUTPUT_PARRYGG_CHARACTER_JSON}/{kebab_name}.json', 'w', encoding='utf-8') as outfile:
+            character_json = {
+                "name": friendly_character_name,
+                "variants": variants,
+            }
+            json.dump(character_json, outfile, indent=2)
+
+
+def create_parrygg_stage_json():
+    ensure_path(OUTPUT_PARRYGG_STAGE_JSON)
+    with open(OUTPUT_STARTGG_JSON, 'r', encoding='utf-8') as json_file:
+        startgg_json_data = json.load(json_file)
+
+    stage_list = startgg_json_data['stages']
+    for friendly_stage_name in stage_list:
+        snakecase_stage_name = friendly_stage_name.replace(' ', '_').lower()
+        # Remove any special characters like apostrophes or periods, except for a few that need them in the filename
+        if friendly_stage_name in ('N.Sanity Beach', 'World 1-1'):
+            snakecase_stage_name = re.sub(r'\.', '_', snakecase_stage_name)
+        else:
+            snakecase_stage_name = re.sub(r'[^\w]', '', snakecase_stage_name)
+
+        kebab_stage_name = snakecase_stage_name.replace('_', '-')
+        dest_path = Path(f'{PARRYGG_PROJECT_DIR}/games/smash-remix/stages/{kebab_stage_name}.png')
+        shutil.copy(f'{INPUT_STAGE_ICON_PATH}/stage_icon/{snakecase_stage_name}.png', dest_path)
+        with open(f'{OUTPUT_PARRYGG_STAGE_JSON}/{kebab_stage_name}.json', 'w', encoding='utf-8') as outfile:
+            stage_json = {
+                "name": friendly_stage_name,
+                "variants": [
+                    {
+                        "images": {
+                            "thumbnail": './' + os.path.relpath(dest_path, PARRYGG_PROJECT_DIR)
+                        }
+                    }
+                ]
+            }
+            json.dump(stage_json, outfile, indent=2)
+
+
+def main_parrygg():
+    create_parrygg_stage_json()
+    create_parrygg_character_json()
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--skip-download', action='store_true')
@@ -365,3 +442,4 @@ if __name__ == '__main__':
 
     main_top8er()
     main_startgg()
+    main_parrygg()
