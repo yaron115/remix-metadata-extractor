@@ -1,0 +1,30 @@
+{
+  "characters": [
+    "captain-falcon",
+    "donkey-kong",
+    "fox",
+    "jigglypuff",
+    "kirby",
+    "link",
+    "luigi",
+    "mario",
+    "ness",
+    "pikachu",
+    "samus",
+    "yoshi"
+  ],
+  "stages": [
+    "congo-jungle",
+    "dream-land",
+    "duel-zone",
+    "final-destination",
+    "hyrule-castle",
+    "meta-crystal",
+    "mushroom-kingdom",
+    "peachs-castle",
+    "planet-zebes",
+    "saffron-city",
+    "sector-z",
+    "yoshis-island"
+  ]
+}
