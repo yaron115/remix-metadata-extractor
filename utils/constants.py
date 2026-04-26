@@ -1,0 +1,20 @@
+
+# Asset input paths
+INPUT_PORTRAIT_PATH = 'input/remix_assets/remix_full_portraits'
+INPUT_STOCK_ICON_PATH = 'input/remix_assets/remix_stock_icons'
+INPUT_CSS_PORTRAIT_PATH = 'input/remix_assets/remix_css_portraits'
+INPUT_STAGE_ICON_PATH = 'input/remix_assets/remix_stage_icons'
+INPUT_ARTWORK_PATH = 'input/remix_assets/remix_character_artwork'
+
+# Asset output paths
+OUTPUT_TOP8ER_PORTRAITS = 'output/top8er/smash_remix/portraits'
+OUTPUT_TOP8ER_ICONS = 'output/top8er/smash_remix/icons'
+OUTPUT_TOP8ER_JSON = 'output/top8er/smash_remix/game.json'
+OUTPUT_STARTGG_CSS_PORTRAITS = 'output/startgg/css_portraits'
+OUTPUT_STARTGG_STOCK_ICONS = 'output/startgg/stock_icons'
+OUTPUT_STARTGG_JSON = 'output/startgg/reference.json'
+OUTPUT_PARRYGG_CHARACTER_JSON = 'output/parrygg/characters'
+OUTPUT_PARRYGG_STAGE_JSON = 'output/parrygg/stages'
+
+# Reference files used for overrides etc
+REF_TOP8ER_PORTRAIT = 'reference/top8er_reference/portrait_config.json'

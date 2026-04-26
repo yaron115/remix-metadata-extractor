@@ -1,14 +1,11 @@
 input/
-output/startgg/css_portraits/
-output/startgg/stock_icons/
-output/top8er/smash_remix/icons/
-output/top8er/smash_remix/portraits/
-output/top8er/smash_remix/*.png
+# parrygg game metadata JSON output will be put in https://github.com/parry-gg/game-metadata with CDN URLs
 output/parrygg/
-reference/startgg_reference
-reference/parrygg_reference
-temp.png
+
+*.png
+*.7z
 
 .idea/
 __pycache__/
 .python_version
+.env
