@@ -1,0 +1,11 @@
+input/
+output/startgg/css_portraits/
+output/startgg/stock_icons/
+output/top8er/smash_remix/icons/
+output/top8er/smash_remix/portraits/
+output/top8er/smash_remix/*.png
+reference/startgg_reference
+temp.png
+
+.idea/
+__pycache__/

@@ -1,0 +1,7 @@
+pillow
+requests
+py7zr
+webcolors
+numpy
+scikit-learn
+colorthief

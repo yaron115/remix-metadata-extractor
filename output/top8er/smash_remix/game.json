@@ -1,0 +1,478 @@
+{
+  "name": "Smash Remix",
+  "characters": [
+    "Banjo",
+    "Bowser",
+    "Captain Falcon",
+    "Conker",
+    "Crash",
+    "Dark Samus",
+    "Dedede",
+    "Donkey Kong",
+    "Dr Luigi",
+    "Dr Mario",
+    "Dragon King",
+    "Ebisumaru",
+    "Falco",
+    "Fox",
+    "Ganondorf",
+    "Giant Donkey Kong",
+    "Giga Bowser",
+    "Goemon",
+    "Jigglypuff",
+    "Kirby",
+    "Lanky",
+    "Link",
+    "Lucas",
+    "Luigi",
+    "Mad Piano",
+    "Marina",
+    "Mario",
+    "Marth",
+    "Metal Luigi",
+    "Metal Mario",
+    "Mewtwo",
+    "Ness",
+    "Peach",
+    "Peppy",
+    "Pikachu",
+    "Roy",
+    "Samus",
+    "Sheik",
+    "Slippy",
+    "Sonic",
+    "Super Sonic",
+    "Wario",
+    "Wolf",
+    "Yoshi",
+    "Young Link"
+  ],
+  "hasIcons": true,
+  "colors": {
+    "Banjo": [
+      "Default",
+      "Black",
+      "Blue",
+      "Green",
+      "Yellow",
+      "White",
+      "Orange",
+      "Pink"
+    ],
+    "Bowser": [
+      "Default",
+      "Red",
+      "Dark Blue",
+      "Black",
+      "Green",
+      "Yellow",
+      "Light Blue"
+    ],
+    "Captain Falcon": [
+      "Default",
+      "Red",
+      "Green",
+      "Pink",
+      "Black",
+      "Blue",
+      "Yellow",
+      "Red/white"
+    ],
+    "Conker": [
+      "Default",
+      "Pink",
+      "Red",
+      "Green",
+      "Black",
+      "White",
+      "Yellow"
+    ],
+    "Crash": [
+      "Default",
+      "Red",
+      "Green",
+      "White",
+      "Yellow",
+      "Black",
+      "Orange"
+    ],
+    "Dark Samus": [
+      "Default",
+      "Blue",
+      "Brown",
+      "White",
+      "Violet",
+      "Gray",
+      "Yellow",
+      "Green"
+    ],
+    "Dedede": [
+      "Default",
+      "Pink",
+      "Orange",
+      "Blue",
+      "Green",
+      "White"
+    ],
+    "Donkey Kong": [
+      "Default",
+      "Black",
+      "Red",
+      "Blue",
+      "Green",
+      "Pink",
+      "White",
+      "Yellow"
+    ],
+    "Dragon King": [
+      "Default",
+      "Green",
+      "White",
+      "Blue",
+      "Yellow",
+      "Pepsi"
+    ],
+    "Dr Luigi": [
+      "Default",
+      "Light Blue",
+      "Pink",
+      "Yellow",
+      "Orange",
+      "Black",
+      "Green",
+      "Violet"
+    ],
+    "Dr Mario": [
+      "Default",
+      "Red",
+      "Black",
+      "Light Blue",
+      "Green",
+      "Yellow"
+    ],
+    "Ebisumaru": [
+      "Default",
+      "Green",
+      "Pink",
+      "Red",
+      "White",
+      "Yellow",
+      "Naked"
+    ],
+    "Falco": [
+      "Default",
+      "Red",
+      "White",
+      "Green",
+      "Black",
+      "Yellow"
+    ],
+    "Fox": [
+      "Default",
+      "Orange",
+      "Violet",
+      "Green",
+      "Black",
+      "Blue",
+      "White",
+      "Pink"
+    ],
+    "Ganondorf": [
+      "Default",
+      "Blue",
+      "Light Blue",
+      "Violet",
+      "Green",
+      "Red",
+      "Yellow"
+    ],
+    "Giant Donkey Kong": [
+      "Default",
+      "Black",
+      "Red",
+      "Blue",
+      "Green",
+      "Pink",
+      "White",
+      "Yellow"
+    ],
+    "Giga Bowser": [
+      "Default",
+      "Red",
+      "Blue",
+      "Black",
+      "Green",
+      "Yellow"
+    ],
+    "Goemon": [
+      "Default",
+      "Blue",
+      "Green",
+      "Violet",
+      "Pink",
+      "White",
+      "Yellow",
+      "Red"
+    ],
+    "Jigglypuff": [
+      "Default",
+      "Red",
+      "Blue",
+      "Green",
+      "Mint",
+      "Yellow",
+      "Violet",
+      "Black",
+      "Orange"
+    ],
+    "Kirby": [
+      "Default",
+      "Yellow",
+      "Light Blue",
+      "Red",
+      "Green",
+      "White",
+      "Dark Blue"
+    ],
+    "Lanky": [
+      "Default",
+      "Red",
+      "Green",
+      "Violet",
+      "Yellow",
+      "Dark Blue",
+      "Light Blue",
+      "Pink"
+    ],
+    "Link": [
+      "Default",
+      "Light Blue",
+      "Red",
+      "Blue",
+      "Black",
+      "Yellow",
+      "Pink"
+    ],
+    "Lucas": [
+      "Default",
+      "Orange",
+      "Pink",
+      "Blue",
+      "Brown",
+      "Green",
+      "Red"
+    ],
+    "Luigi": [
+      "Default",
+      "White",
+      "Light Blue",
+      "Pink",
+      "Violet",
+      "Dark Blue",
+      "Yellow",
+      "Orange"
+    ],
+    "Mad Piano": [
+      "Default",
+      "Red",
+      "Yellow",
+      "Light Blue",
+      "Green",
+      "White"
+    ],
+    "Marina": [
+      "Default",
+      "Red/blonde",
+      "Blue",
+      "Green",
+      "Violet",
+      "Yellow",
+      "Yellow/red"
+    ],
+    "Mario": [
+      "Default",
+      "Yellow",
+      "Brown",
+      "Blue",
+      "Green",
+      "White",
+      "Red",
+      "Bee"
+    ],
+    "Marth": [
+      "Default",
+      "Red",
+      "Green",
+      "Black",
+      "White",
+      "Yellow"
+    ],
+    "Metal Luigi": [
+      "Default",
+      "Red",
+      "Green",
+      "Blue",
+      "Yellow",
+      "Pink"
+    ],
+    "Metal Mario": [
+      "Default",
+      "Red",
+      "Green",
+      "Blue",
+      "Yellow",
+      "Pink"
+    ],
+    "Mewtwo": [
+      "Default",
+      "Green",
+      "Red",
+      "Dark Blue",
+      "Yellow",
+      "Light Blue",
+      "Pink"
+    ],
+    "Ness": [
+      "Default",
+      "Yellow",
+      "Dark Blue",
+      "Green",
+      "White",
+      "Violet",
+      "Light Blue"
+    ],
+    "Peach": [
+      "Default",
+      "Orange",
+      "Red",
+      "Blue",
+      "Green",
+      "Brunette",
+      "Pink",
+      "White",
+      "Bee"
+    ],
+    "Peppy": [
+      "Default",
+      "Red",
+      "Brown",
+      "Light Blue",
+      "Black",
+      "Orange"
+    ],
+    "Pikachu": [
+      "Default",
+      "Red",
+      "Blue",
+      "Green",
+      "Yellow",
+      "Sewer",
+      "Violet",
+      "Pink"
+    ],
+    "Roy": [
+      "Default",
+      "Red",
+      "Green",
+      "Blue",
+      "Yellow",
+      "Black"
+    ],
+    "Samus": [
+      "Default",
+      "Pink",
+      "Black",
+      "Green",
+      "Violet",
+      "White",
+      "Light Blue",
+      "Yellow"
+    ],
+    "Sheik": [
+      "Default",
+      "Red",
+      "Green",
+      "Violet",
+      "Black",
+      "White",
+      "Yellow"
+    ],
+    "Slippy": [
+      "Default",
+      "Red",
+      "Blue",
+      "Green",
+      "Violet",
+      "Orange",
+      "Brown"
+    ],
+    "Sonic": [
+      "Default",
+      "Modern Black",
+      "Modern Red",
+      "Modern Green",
+      "Modern Violet",
+      "Modern Yellow",
+      "Classic Blue",
+      "Classic Yellow",
+      "Classic Red",
+      "Classic Green",
+      "Classic Pink",
+      "Classic Orange"
+    ],
+    "Super Sonic": [
+      "Default",
+      "Light Blue",
+      "Green",
+      "Red",
+      "Violet",
+      "Pink"
+    ],
+    "Wario": [
+      "Default",
+      "Red",
+      "Teal",
+      "Blue/pink",
+      "Light green",
+      "Violet",
+      "Green",
+      "Black"
+    ],
+    "Wolf": [
+      "Default",
+      "Pink",
+      "Light Blue",
+      "Green",
+      "Black",
+      "Violet",
+      "Yellow"
+    ],
+    "Yoshi": [
+      "Default",
+      "Red",
+      "Light Blue",
+      "Yellow",
+      "Pink",
+      "Dark Blue",
+      "Black",
+      "White",
+      "Orange",
+      "Violet"
+    ],
+    "Young Link": [
+      "Default",
+      "Light Blue",
+      "Red",
+      "Blue",
+      "Pink",
+      "Black",
+      "Yellow"
+    ]
+  },
+  "blackSquares": true,
+  "defaultLayoutColors": [
+    "#1f0141",
+    "#ffff11"
+  ],
+  "colorGuide": null
+}
