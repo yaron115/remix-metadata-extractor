@@ -2,10 +2,11 @@ input/
 # parrygg game metadata JSON output will be put in https://github.com/parry-gg/game-metadata with CDN URLs
 output/parrygg/
 
-*.png
+output/**/*.png
 *.7z
 
 .idea/
 __pycache__/
 .python_version
 .env
+*.swp
