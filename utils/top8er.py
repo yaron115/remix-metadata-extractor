@@ -173,7 +173,7 @@ def create_top8er_json():
             "#1f0141",
             "#ffff11"
         ],
-        "colorGuide": None
+        "colorGuide": "https://joaorb64.github.io/StreamHelperAssets/game/ssb64/full",
     }
     with open(f'{OUTPUT_TOP8ER_JSON}', 'w') as outfile:
         json.dump(json_data, outfile, indent=2)
