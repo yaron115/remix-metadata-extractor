@@ -58,22 +58,28 @@ def format_portrait_top8er(portrait, eye_levels):
 
     ensure_path(f'{OUTPUT_TOP8ER_PORTRAITS}/{normalized_character_name}')
 
-    # Crop into a square or very close, so we don't have any aspect ratio-related black bars and save in dest.
-    # Use the width as the main driver for size, but with a minimum of 512.
+    # Crop into a square, so we don't have any aspect ratio-related black bars and save in dest.
     # We do this all relative to the eye level of the character if it's low enough, so we don't end up with just Lanky's
     # hands above his head or something.  I'm aiming to put the eyes about 1/3 of the way down the image, which works
     # well for most characters.  For some like Falcon/Yoshi/Slippy, I recommend editing the JSON to target lower
     # instead, as otherwise we'll have quite a bit of space above his head.
-    # TODO: just define custom square bounds for all the characters instead.
     img = Image.open(portrait)
+    if img.width < 512 or img.height < 512:
+        raise Exception(
+            f'Portrait {portrait.name} is too small.  Minimum 512x512 needed.  '
+            f'Width: {img.width}, Height: {img.height}'
+        )
+
     bbox = img.getbbox()
-    width = bbox[2] - bbox[0]
+    character_width = bbox[2] - bbox[0]
+    width = character_width
     if width < 512:
         width = 512
 
-    eye_y = eye_offsets['y']
     left_bound = bbox[0]
     right_bound = bbox[0] + width
+
+    eye_y = eye_offsets['y']
     upper_bound = eye_y - (width // 3)
     if upper_bound < 0:
         upper_bound = 0
@@ -81,9 +87,20 @@ def format_portrait_top8er(portrait, eye_levels):
     else:
         lower_bound = eye_y + ((width // 3) * 2)
 
+    cropped_width = right_bound - left_bound
+    cropped_height = lower_bound - upper_bound
+    min_dimension = min(cropped_width, cropped_height)
+    if cropped_width > min_dimension:
+        right_bound = left_bound + min_dimension
+
+    if cropped_height > min_dimension:
+        lower_bound = upper_bound + min_dimension
+
     box = (left_bound, upper_bound, right_bound, lower_bound)
     cropped_img = img.crop(box)
-    cropped_img.save(f'{OUTPUT_TOP8ER_PORTRAITS}/{normalized_character_name}/{color_number}.png')
+    # Now simply resize to 512x512
+    cropped_resized = cropped_img.resize((512, 512))
+    cropped_resized.save(f'{OUTPUT_TOP8ER_PORTRAITS}/{normalized_character_name}/{color_number}.png')
 
 
 def bundle_icons_top8er():
@@ -112,6 +129,10 @@ def format_icon(icon):
 
 
 def create_top8er_json():
+    """Recommended to just manually edit the JSON in the output folder.
+
+    This generates a "starter" version of the JSON, but color detection is not great.
+    """
     print('Creating JSON file for Top8er...')
     character_name_list = [
         x.name for x in Path(OUTPUT_TOP8ER_PORTRAITS).iterdir() if x.is_dir()

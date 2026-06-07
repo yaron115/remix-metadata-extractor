@@ -3,13 +3,12 @@ import argparse
 from utils.downloaders import download_all
 from utils.parrygg import create_parrygg_character_json, create_parrygg_stage_json, get_parrygg_project_dir
 from utils.startgg import create_startgg_json, bundle_startgg_css_portraits, bundle_startgg_stock_icons
-from utils.top8er import create_top8er_json, bundle_icons_top8er, bundle_portraits_top8er
+from utils.top8er import bundle_icons_top8er, bundle_portraits_top8er
 
 
 def main_top8er():
     bundle_portraits_top8er()
     bundle_icons_top8er()
-    create_top8er_json()
 
 
 def main_parrygg():
