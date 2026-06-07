@@ -3,41 +3,56 @@ from pathlib import Path
 import re
 import shutil
 
+from PIL import Image
+
 from utils.constants import (
     INPUT_CSS_PORTRAIT_PATH,
     INPUT_STAGE_ICON_PATH,
     INPUT_STOCK_ICON_PATH,
-    OUTPUT_STARTGG_CSS_PORTRAITS,
+    OUTPUT_STARTGG_CHARACTERS,
     OUTPUT_STARTGG_JSON,
-    OUTPUT_STARTGG_STOCK_ICONS,
+    OUTPUT_TOP8ER_PORTRAITS,
 )
 from utils.helpers import ensure_path
 
 
-def bundle_startgg_css_portraits():
-    print('Copying CSS icons to startgg folder...')
+def bundle_startgg_full_character_portraits():
+    print('Copying full character portraits to startgg folder...')
 
-    ensure_path(OUTPUT_STARTGG_CSS_PORTRAITS)
-    css_portrait_list = [f for f in Path(f'{INPUT_CSS_PORTRAIT_PATH}/portrait').iterdir() if f.is_file() and f.name.endswith('.png')]
-    for css_portrait in css_portrait_list:
-        character_match = re.search(r'^(.*)\.png$', css_portrait.name)
-        character_name = character_match.group(1)
-        if character_name.lower() != 'random':
-            shutil.copy(css_portrait, f'{OUTPUT_STARTGG_CSS_PORTRAITS}/{css_portrait.name}')
+    ensure_path(OUTPUT_STARTGG_CHARACTERS)
+    character_dirs = [f for f in Path(OUTPUT_TOP8ER_PORTRAITS).iterdir() if f.is_dir()]
+    for character_dir in character_dirs:
+        icon = Path(f'{character_dir}/0.png')
+        character_name = icon.parent.name
+        ensure_path(f'{OUTPUT_STARTGG_CHARACTERS}/{character_name}')
+        shutil.copy(icon, f'{OUTPUT_STARTGG_CHARACTERS}/{character_name}/icon.png')
 
     print('Done.')
 
 
 def bundle_startgg_stock_icons():
-    print('Copying CSS icons to startgg folder...')
-    ensure_path(OUTPUT_STARTGG_STOCK_ICONS)
+    print('Resizing stock icons and saving to startgg folder...')
+    ensure_path(OUTPUT_STARTGG_CHARACTERS)
     # Only copy the default stock icons; startgg doesn't support alt colors yet
-    stock_icon_list = [f for f in Path(f'{INPUT_STOCK_ICON_PATH}/base_files/icon').iterdir() if f.is_file() and f.name.endswith('_0.png')]
+    stock_icon_list = [
+        f for f in Path(f'{INPUT_STOCK_ICON_PATH}/base_files/icon').iterdir()
+        if f.is_file() and f.name.endswith('_0.png')
+    ]
     for stock_icon in stock_icon_list:
         character_match = re.search(r'^(.*)_0\.png$', stock_icon.name)
         character_name = character_match.group(1)
+        normalized_character_name = character_name.replace('_', ' ').title()
         if character_name.lower() != 'random':
-            shutil.copy(stock_icon, f'{OUTPUT_STARTGG_STOCK_ICONS}/{character_name}.png')
+            ensure_path(f'{OUTPUT_STARTGG_CHARACTERS}/{normalized_character_name}')
+            img = Image.open(stock_icon)
+            # We're copying what vanilla 64 character have available right now on startgg -- there's an "original"
+            # stock icon that's 24x30 (3x scale from the 8x10 asset in the game), and a "non-original" that's 32x40
+            # (4x scale).  They likely fetched a resized version of the image from a Wiki or something and then resized
+            # it again.
+            three_scale_img = img.resize((24, 30))
+            three_scale_img.save(f'{OUTPUT_STARTGG_CHARACTERS}/{normalized_character_name}/stock_icon_original.png')
+            four_scale_img = img.resize((32, 40))
+            four_scale_img.save(f'{OUTPUT_STARTGG_CHARACTERS}/{normalized_character_name}/stock_icon_resized.png')
 
     print('Done.')
 
