@@ -44,15 +44,13 @@ def bundle_startgg_stock_icons():
         normalized_character_name = character_name.replace('_', ' ').title()
         if character_name.lower() != 'random':
             ensure_path(f'{OUTPUT_STARTGG_CHARACTERS}/{normalized_character_name}')
-            img = Image.open(stock_icon)
-            # We're copying what vanilla 64 character have available right now on startgg -- there's an "original"
-            # stock icon that's 24x30 (3x scale from the 8x10 asset in the game), and a "non-original" that's 32x40
-            # (4x scale).  They likely fetched a resized version of the image from a Wiki or something and then resized
-            # it again.
-            three_scale_img = img.resize((24, 30))
-            three_scale_img.save(f'{OUTPUT_STARTGG_CHARACTERS}/{normalized_character_name}/stock_icon_original.png')
-            four_scale_img = img.resize((32, 40))
-            four_scale_img.save(f'{OUTPUT_STARTGG_CHARACTERS}/{normalized_character_name}/stock_icon_resized.png')
+            img = Image.open(stock_icon).convert('RGBA')
+            # start.gg requires square icons that are at least 30x30.  The originals are 8x10.  We'll add two blank rows
+            # of width, one on each side; and then simply 3x scale the image.
+            canvas = Image.new('RGBA', (10, 10), (0, 0, 0, 0))
+            canvas.paste(img, (1, 0))
+            resized = canvas.resize((30, 30), Image.NEAREST)
+            resized.save(f'{OUTPUT_STARTGG_CHARACTERS}/{normalized_character_name}/stock_icon.png')
 
     print('Done.')
 

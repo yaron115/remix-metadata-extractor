@@ -45,9 +45,9 @@ In the mean time, you can run a local Django server using the repo above and use
 Tournament manager.  Some games have the ability to report match data that includes characters, stock count, and stage.
 Currently, they are NOT adding stage reporting to more games however.
 
-This repo has utilities that will package cropped square full portraits, stock icons (default color only; they do not
-support alt colors yet) in a couple different sizes to match what they have for vanilla, and a reference JSON that
-includes characters and stages.  The JSON is not currently in use by default since they aren't accepting stages now.
+This repo has utilities that will package cropped square full portraits, 30x30 stock icons (default color only; they do
+not support alt colors yet), and a reference JSON that includes characters and stages.
+The JSON is not currently in use by default since they aren't accepting stages now.
 
 When a new version of Remix adds characters/stages, you can use these utils to bundle assets/metadata for them.
 Then, you can send it to their support email and hope that someone adds them. 
