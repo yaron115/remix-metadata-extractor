@@ -14,15 +14,15 @@ for character & stages.
 When a new version of Remix adds characters/colors/stages, you can use these utils to make it easy to make a PR for the
 above repo.
 
-![Remix bracket view](docs/images/remix_bracket_view.png)
+![Remix bracket view](docs/images/parrygg_remix_bracket_view.png)
 
-![Remix game reporting](docs/images/remix_game_reporting.png)
+![Remix game reporting](docs/images/parrygg_remix_game_reporting.png)
 
-![Remix stage select](docs/images/remix_stage_select.png)
+![Remix stage select](docs/images/parrygg_remix_stage_select.png)
 
-![Vanilla match reporting](docs/images/vanilla_match_reporting.png)
+![Vanilla match reporting](docs/images/parrygg_vanilla_match_reporting.png)
 
-![Vanilla stage select](docs/images/vanilla_stage_select.png)
+![Vanilla stage select](docs/images/parrygg_vanilla_stage_select.png)
 
 ## [Top8er](https://www.top8er.com/)
 Website that lets you generate tourney result or PR images.
@@ -50,4 +50,10 @@ not support alt colors yet), and a reference JSON that includes characters and s
 The JSON is not currently in use by default since they aren't accepting stages now.
 
 When a new version of Remix adds characters/stages, you can use these utils to bundle assets/metadata for them.
-Then, you can send it to their support email and hope that someone adds them. 
+Then, you can send it to their support email and hope that someone adds them.
+
+![Remix bracket view](docs/images/startgg_bracket_view.png)
+
+![Remix character choices](docs/images/startgg_character_list.png)
+
+![Remix match reporting](docs/images/startgg_character_reporting.png)
